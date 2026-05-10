@@ -1,0 +1,92 @@
+﻿@model IEnumerable<financiera.Models.Cliente>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Crear Cliente</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Cédula
+            </th>
+            <th>
+                Nombre Completo
+            </th>
+            <th>
+                Razón Social
+            </th>
+            <th>
+                Dirección
+            </th>
+            <th>
+                Telefono
+            </th>
+            <th>
+                Correo
+            </th>
+            <th>
+                Estado
+            </th>
+            <th>
+                Fecha de registro
+            </th>
+            <th>
+                Departamento
+            </th>
+            <th>
+                Tipo de cliente
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cedula)
+            </td>
+            <td>
+                @item.PrimerNombre
+                @item.SegundoNombre
+                @item.PrimerApellido
+                @item.SegundoApellido
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RazonSocial)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Direccion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telefono)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Correo)
+            </td>
+            <td>
+                @(item.Activo == true ? "Activo" : "Inactivo")
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaRegistro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdDepartamentoNavigation.NombreDepartamento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdTipoClienteNavigation.Nombre)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdCliente">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.IdCliente">Detalles</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdCliente">Eliminar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,74 @@
+﻿@page
+@model LoginModel
+
+@{
+    Layout = "/Views/Shared/_LoginLayout.cshtml";
+    ViewData["Title"] = "Iniciar Sesión";
+}
+
+<div class="login-container">
+
+    <div class="login-left">
+
+
+    </div>
+
+    <div class="login-right">
+
+        <div class="login-card">
+            <div class="login-logo">
+                <img src="~/images/minilogo.png" alt="Logo" />
+            </div>
+
+            <div class="login-title">
+                <h2>Iniciar Sesión</h2>
+                <p>Ingrese sus credenciales</p>
+            </div>
+
+            <form method="post">
+
+                <div asp-validation-summary="ModelOnly"
+                     class="text-danger mb-3">
+                </div>
+
+                <div class="form-group mb-3">
+
+                    <input asp-for="Input.Email"
+                           class="form-control"
+                           placeholder="Usuario" />
+
+                    <span asp-validation-for="Input.Email"
+                          class="text-danger">
+                    </span>
+
+                </div>
+
+                <div class="form-group mb-4">
+
+                    <input asp-for="Input.Password"
+                           class="form-control"
+                           placeholder="Contraseña" />
+
+                    <span asp-validation-for="Input.Password"
+                          class="text-danger">
+                    </span>
+
+                </div>
+
+                <button type="submit"
+                        class="btn-login">
+                    Acceder
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+}
